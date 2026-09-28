@@ -45,7 +45,7 @@ const HeroSection = () => {
 				mb="2.5rem"
 				lineHeight={1.7}>
 				I craft interfaces that are fast, accessible, and considered. Based in
-				Calgary.
+				Lagos.
 			</Box>
 
 			{/* CTAs */}

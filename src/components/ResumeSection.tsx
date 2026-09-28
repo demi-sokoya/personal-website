@@ -45,8 +45,17 @@ const ResumeSection = () => {
 						<FontAwesomeIcon icon={faFile} color="var(--accent)" />
 					</Box>
 					<Box minWidth={0}>
-						<Text fontSize="0.875rem" fontWeight="500" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">Demi Sokoya - Resume</Text>
-						<Text fontSize="0.75rem" color="var(--ink-3)">Front-end developer, UX Designer · PDF, updated Apr 2026</Text>
+						<Text
+							fontSize="0.875rem"
+							fontWeight="500"
+							overflow="hidden"
+							textOverflow="ellipsis"
+							whiteSpace="nowrap">
+							Demi Sokoya - Resume
+						</Text>
+						<Text fontSize="0.75rem" color="var(--ink-3)">
+							Front-end developer, UX Designer · PDF, updated Sep 2026
+						</Text>
 					</Box>
 				</HStack>
 				<Link
