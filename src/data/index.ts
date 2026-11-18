@@ -73,19 +73,19 @@ export const projects: ProjectItem[] = [
 export const illustrations: IllustrationItem[] = [
 	{
 		id: 1,
-		caption: "Orbit I — digital, 2024",
+		caption: "Orbit I, digital, 2024",
 		color: "#2D1B4E",
 		aspectRatio: "4/3",
 	},
 	{
 		id: 2,
-		caption: "Still Life No. 3 — mixed media, 2024",
+		caption: "Still Life No. 3, mixed media, 2024",
 		color: "#F0EAD6",
 		aspectRatio: "5/4",
 	},
 	{
 		id: 3,
-		caption: "Night City — digital, 2023",
+		caption: "Night City, digital, 2023",
 		color: "#1C2B3A",
 		aspectRatio: "4/3",
 	},

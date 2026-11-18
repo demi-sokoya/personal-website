@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T00:00:00Z",
+  "title": "Design System: Demi Sokoya",
+  "extensions": {
+    "colorMeta": {
+      "indigo-950": {
+        "role": "neutral",
+        "displayName": "Deep Vat",
+        "canonical": "#0f1532",
+        "tonalRamp": [
+          "#0f1532",
+          "#141b3d",
+          "#1c2760",
+          "#2c3d8f",
+          "#4a5cad",
+          "#7c8bc8",
+          "#b4bee0",
+          "#e2e6f0"
+        ]
+      },
+      "indigo-900": {
+        "role": "neutral",
+        "displayName": "Vat Indigo",
+        "canonical": "#141b3d",
+        "tonalRamp": [
+          "#0f1532",
+          "#141b3d",
+          "#1c2760",
+          "#2c3d8f",
+          "#4a5cad",
+          "#7c8bc8",
+          "#b4bee0",
+          "#e2e6f0"
+        ]
+      },
+      "indigo-800": {
+        "role": "neutral",
+        "displayName": "Panel Indigo",
+        "canonical": "#1c2760",
+        "tonalRamp": [
+          "#0f1532",
+          "#141b3d",
+          "#1c2760",
+          "#2c3d8f",
+          "#4a5cad",
+          "#7c8bc8",
+          "#b4bee0",
+          "#e2e6f0"
+        ]
+      },
+      "indigo-700": {
+        "role": "neutral",
+        "displayName": "Bright Indigo",
+        "canonical": "#2c3d8f",
+        "tonalRamp": [
+          "#0f1532",
+          "#141b3d",
+          "#1c2760",
+          "#2c3d8f",
+          "#4a5cad",
+          "#7c8bc8",
+          "#b4bee0",
+          "#e2e6f0"
+        ]
+      },
+      "cloth": {
+        "role": "neutral",
+        "displayName": "Undyed Cotton",
+        "canonical": "#eef0f5",
+        "tonalRamp": [
+          "#1e2130",
+          "#3a3f52",
+          "#5a6075",
+          "#7d8398",
+          "#a2a8bb",
+          "#c6cbd9",
+          "#e2e6f0",
+          "#eef0f5"
+        ]
+      },
+      "cloth-2": {
+        "role": "neutral",
+        "displayName": "Cotton Shade",
+        "canonical": "#e2e6f0",
+        "tonalRamp": [
+          "#1e2130",
+          "#3a3f52",
+          "#5a6075",
+          "#7d8398",
+          "#a2a8bb",
+          "#c6cbd9",
+          "#e2e6f0",
+          "#eef0f5"
+        ]
+      },
+      "on-indigo": {
+        "role": "neutral",
+        "displayName": "Resist White",
+        "canonical": "#eef0f5"
+      },
+      "on-indigo-2": {
+        "role": "neutral",
+        "displayName": "Faded Resist",
+        "canonical": "#b4bee0"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Dye Ink",
+        "canonical": "#141b3d"
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Wash Ink",
+        "canonical": "#3d4a7a"
+      },
+      "turmeric": {
+        "role": "primary",
+        "displayName": "Turmeric Thread",
+        "canonical": "#f2b437",
+        "tonalRamp": [
+          "#3d2a05",
+          "#664610",
+          "#8f631a",
+          "#b98222",
+          "#f2b437",
+          "#f7c65e",
+          "#fadb98",
+          "#fdf0d4"
+        ]
+      },
+      "turmeric-hover": {
+        "role": "primary",
+        "displayName": "Turmeric Glint",
+        "canonical": "#f7c65e"
+      },
+      "rule-on-indigo": {
+        "role": "neutral",
+        "displayName": "Hairline on Indigo",
+        "canonical": "rgba(238, 240, 245, 0.2)"
+      },
+      "rule-on-cloth": {
+        "role": "neutral",
+        "displayName": "Hairline on Cloth",
+        "canonical": "rgba(20, 27, 61, 0.18)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero and contact headlines. Archivo at font-stretch 112%."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project names; the lead project runs larger."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Paragraph under a display or headline, secondary tint, about 34rem measure; 1.125rem on phones."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Ledgers, captions, nav, footer. Never below 1rem. Tabular numerals page-wide."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Button text and emphasised link values."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The one easing curve: button hovers (0.2s), header hide and show (0.35s), motif draw-in (0.9s)."
+      },
+      {
+        "name": "cloth-draw-once",
+        "value": "stroke-dashoffset 1 to 0, 0.9s ease-out, 40ms stagger per cell",
+        "purpose": "Cloth panel resist lines draw once on entering view (threshold 0.15). Skipped under prefers-reduced-motion and without IntersectionObserver."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "30rem (Chakra default)"
+      },
+      {
+        "name": "md",
+        "value": "48rem (Chakra default)"
+      },
+      {
+        "name": "lg",
+        "value": "64rem (Chakra default)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one warm thread: primary actions only.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">See the work <svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M8 2v11M3 8.5l5 5 5-5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.625rem; background: var(--turmeric, #f2b437); color: var(--indigo-900, #141b3d); font-family: var(--sans, 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif); font-weight: 700; font-size: 1.0625rem; padding: 0.9rem 1.5rem; text-decoration: none; border-radius: 0; transition: background 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary:hover { background: var(--turmeric-hover, #f7c65e); } .ds-btn-primary:focus-visible { outline: 2px solid var(--turmeric, #f2b437); outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Secondary Button on Indigo",
+      "kind": "button",
+      "refersTo": "button-secondary-on-indigo",
+      "description": "Outline action on the indigo field; inverts on hover.",
+      "html": "<div class=\"ds-field-indigo\"><a class=\"ds-btn-secondary\" href=\"#\">Download resume</a></div>",
+      "css": ".ds-field-indigo { background: #141b3d; padding: 1.5rem; } .ds-btn-secondary { display: inline-flex; align-items: center; gap: 0.625rem; color: #eef0f5; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-weight: 700; font-size: 1.0625rem; padding: 0.9rem 1.5rem; border: 1.5px solid #eef0f5; border-radius: 0; text-decoration: none; transition: background 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-secondary:hover { background: #eef0f5; color: #141b3d; } .ds-btn-secondary:focus-visible { outline: 2px solid #f2b437; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Fixed header on Vat Indigo with a hairline beneath; compact outline CTA.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"#\">Demi Sokoya</a><nav class=\"ds-nav-links\"><a href=\"#\">Work</a><a href=\"#\">Resume</a><a href=\"#\">Listening</a><a class=\"ds-nav-cta\" href=\"#\">Get in touch</a></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; height: 4rem; padding: 0 1.5rem; background: #141b3d; border-bottom: 1px solid rgba(238, 240, 245, 0.2); font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; } .ds-nav-mark { font-family: 'Archivo Variable', 'Arial Narrow', sans-serif; font-stretch: 112%; font-weight: 760; font-size: 1.125rem; letter-spacing: -0.01em; color: #eef0f5; text-decoration: none; } .ds-nav-links { display: flex; align-items: center; gap: 2.25rem; } .ds-nav-links a { color: #b4bee0; font-size: 1rem; text-decoration: none; text-underline-offset: 0.2em; } .ds-nav-links a:hover { color: #eef0f5; text-decoration: underline; } .ds-nav-links a:focus-visible { outline: 2px solid #f2b437; outline-offset: 3px; border-radius: 2px; } .ds-nav-links .ds-nav-cta { color: #eef0f5; font-weight: 700; border: 1.5px solid #eef0f5; padding: 0.4rem 1rem; } .ds-nav-links .ds-nav-cta:hover { background: #eef0f5; color: #141b3d; text-decoration: none; }"
+    },
+    {
+      "name": "Ruled Ledger",
+      "kind": "custom",
+      "refersTo": "ledger-row",
+      "description": "Project facts as hairline-ruled rows; replaces chips.",
+      "html": "<dl class=\"ds-ledger\"><div class=\"ds-ledger-row\"><dt>Year</dt><dd>2025</dd></div><div class=\"ds-ledger-row\"><dt>Built with</dt><dd>React, TypeScript, Vite</dd></div><div class=\"ds-ledger-row\"><dt>See it</dt><dd><a href=\"#\">Live site</a> <a href=\"#\">Source</a></dd></div></dl>",
+      "css": ".ds-ledger { background: #141b3d; color: #eef0f5; padding: 1.5rem; margin: 0; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-ledger-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: 0.75rem 0; border-top: 1px solid rgba(238, 240, 245, 0.2); font-size: 1rem; } .ds-ledger-row:last-child { border-bottom: 1px solid rgba(238, 240, 245, 0.2); } .ds-ledger dt { color: #b4bee0; } .ds-ledger dd { margin: 0; display: flex; flex-wrap: wrap; column-gap: 1.5rem; } .ds-ledger a { color: #eef0f5; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; } .ds-ledger a:hover { text-decoration-thickness: 3px; } .ds-ledger a:focus-visible { outline: 2px solid #f2b437; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Screenshot Plate",
+      "kind": "card",
+      "refersTo": "figure-plate",
+      "description": "Screenshot shown whole on undyed cloth, host named beneath.",
+      "html": "<figure class=\"ds-plate\"><div class=\"ds-plate-img\"></div><figcaption>weatherly.example.app</figcaption></figure>",
+      "css": ".ds-plate { margin: 0; background: #eef0f5; color: #3d4a7a; padding: 1rem 1rem 0.875rem; max-width: 28rem; font-family: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif; } .ds-plate-img { aspect-ratio: 16 / 10; background: #1c2760; } .ds-plate figcaption { margin-top: 0.875rem; font-size: 1rem; }"
+    },
+    {
+      "name": "Cloth Panel",
+      "kind": "custom",
+      "refersTo": "cloth-panel",
+      "description": "Square-cell adire panel: Panel Indigo ground, painted resist dividers, hand-drawn motifs. Decorative; aria-hidden.",
+      "html": "<svg class=\"ds-cloth\" viewBox=\"-2 -2 404 204\" aria-hidden=\"true\"><rect width=\"400\" height=\"200\" fill=\"#1c2760\"/><g fill=\"none\" stroke=\"#eef0f5\" stroke-opacity=\"0.55\" stroke-width=\"1.6\" stroke-linecap=\"round\"><path d=\"M200 0 C201 50 199 100 200.5 200 M300 100 C299 130 301 170 300 200 M200 100 C250 101 300 99 400 100 M0 0 L400 0 L400 200 L0 200 Z\"/></g><g fill=\"none\" stroke=\"#eef0f5\" stroke-linecap=\"round\" stroke-width=\"2.5\"><circle cx=\"100\" cy=\"100\" r=\"62\"/><circle cx=\"100\" cy=\"100\" r=\"36\"/><circle cx=\"100\" cy=\"100\" r=\"8\"/><path d=\"M218 50 C232 38 244 62 258 50 C272 38 284 62 284 50\"/><circle cx=\"350\" cy=\"50\" r=\"30\"/><path d=\"M222 130 L278 170 M278 130 L222 170\"/><path d=\"M318 150 C330 120 370 180 382 150\"/></g></svg>",
+      "css": ".ds-cloth { display: block; width: 100%; max-width: 32rem; background: #141b3d; overflow: visible; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Starch Resist",
+    "overview": "The design is the starch resist, the build is the dye, and the pattern comes through intact. The world is adire eleko, the Yoruba resist-dyed indigo cloth: a deep indigo ground, undyed cool cotton as the second field, and hand-painted white resist lines laid into one strict square panel grid. Everything that is not indigo or cloth has to earn its place, and only one warm thread runs through the whole page.\n\nThe page is calm and dense with fact rather than with ornament. Sections are full-bleed bands on one of two fields (indigo or cloth), each holding a centred column on a twelve-column module. Hand-drawn motif panels mark the seams between sections and draw their lines once as they enter view. Project facts sit in ruled ledgers, screenshots are shown whole on a strip of cloth and named by their host beneath.\n\nThis world replaced an earlier cream ground with an italic serif display face and a rust accent. None of that vocabulary carries over.",
+    "keyCharacteristics": [
+      "Two fields only: indigo dye and undyed cloth.",
+      "One warm thread, turmeric, reserved for primary actions and keyboard wayfinding.",
+      "One square cloth module shared by every motif panel.",
+      "Wide, sharp grotesk display over a hyperlegible body face.",
+      "Ruled hairlines carry structure; no cards, no chips, no shadows.",
+      "Hand-drawn irregularity lives in the motifs and resist lines, never in the type or layout."
+    ],
+    "rules": [
+      {
+        "name": "The One Warm Thread Rule",
+        "body": "Turmeric appears on primary actions, the focus ring on indigo, and the skip link. Nothing else: no turmeric headings, links, hover states, icons or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Fields Rule",
+        "body": "A section sits on indigo or on cloth, set through the section's field. Text colors switch with the field (on-indigo pair on indigo, ink pair on cloth); never mix the pairs.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sixteen Floor Rule",
+        "body": "No running text below 16px (1rem). The root inherits the browser default size so user preferences scale everything.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Eyebrow Rule",
+        "body": "Headings stand on their own. No small uppercase or tracked label sits above a heading to introduce it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Wide Display Rule",
+        "body": "Every heading uses the display face at 112% width with negative tracking (-0.015em to -0.035em) and balanced wrapping. Body paragraphs use pretty wrapping.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Module Rule",
+        "body": "Every cloth panel is built from one square cell: one column of the gutterless twelve-column module on desktop, one sixth of the column on phones. New panels add or remove cells; they never resize the cell.",
+        "section": "layout"
+      },
+      {
+        "name": "The Dyed Not Lifted Rule",
+        "body": "Surfaces are separated by dye depth and ruled lines, never by drop shadows or blur.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep turmeric to primary actions, the focus ring on indigo and the skip link.",
+      "Do show hover on links by thickening the underline (1px to 3px), not by changing to turmeric.",
+      "Do build every cloth panel from the one square cell: one column of the gutterless twelve-column module, six cells across on phones.",
+      "Do rule facts into ledgers with hairlines.",
+      "Do keep all running text at 16px or larger.",
+      "Do run the draw-once motion only when the visitor has not asked for reduced motion.",
+      "Do switch focus outline to Bright Indigo on the cloth field."
+    ],
+    "donts": [
+      "Don't use chips, pills or tag badges; use a ruled ledger.",
+      "Don't put an eyebrow label above a heading.",
+      "Don't round corners or add drop shadows to buttons, plates or panels.",
+      "Don't bring back the cream ground, italic serif display or rust accent.",
+      "Don't resize the cloth cell to fit a layout; change the cell count instead."
+    ]
+  }
+}

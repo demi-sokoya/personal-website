@@ -7,30 +7,141 @@
 }
 
 :root {
-	--bg: #f5f2ec;
-	--surface: #edeae2;
-	--ink: #1a1916;
-	--ink-2: #6b6860;
-	--ink-3: #a8a59f;
-	--accent: #c84b2f;
-	--accent-light: #f5e8e4;
-	--border: rgba(26, 25, 22, 0.1);
-	--border-strong: rgba(26, 25, 22, 0.2);
-	--serif: "DM Serif Display", Georgia, serif;
-	--sans: "Instrument Sans", sans-serif;
-	--mono: "DM Mono", monospace;
-	--r: 10px;
+	/* Indigo, from the dye vat: deepest ground to mid panel */
+	--indigo-950: #0f1532;
+	--indigo-900: #141b3d;
+	--indigo-800: #1c2760;
+	--indigo-700: #2c3d8f;
+	/* Undyed cotton: the resist line and the second field */
+	--cloth: #eef0f5;
+	--cloth-2: #e2e6f0;
+	/* Text on indigo, tinted from the hue */
+	--on-indigo: #eef0f5;
+	--on-indigo-2: #b4bee0;
+	/* Text on cloth */
+	--ink: #141b3d;
+	--ink-2: #3d4a7a;
+	/* The one warm thread: primary actions only */
+	--turmeric: #f2b437;
+	--turmeric-hover: #f7c65e;
+
+	--rule-on-indigo: rgba(238, 240, 245, 0.2);
+	--rule-on-cloth: rgba(20, 27, 61, 0.18);
+
+	--display: "Archivo Variable", "Arial Narrow", sans-serif;
+	--sans: "Atkinson Hyperlegible Next Variable", system-ui, sans-serif;
+
+	--page-max: 75rem;
+	--gutter: clamp(1.25rem, 4vw, 3rem);
+	--section-y: clamp(4.5rem, 10vw, 8rem);
+	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
 	scroll-behavior: smooth;
+	scroll-padding-top: 4.5rem;
+	background: var(--indigo-900);
+	scrollbar-color: var(--indigo-700) var(--indigo-950);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
 }
 
 body {
 	font-family: var(--sans);
-	background: var(--bg);
-	color: var(--ink);
-	font-size: 100%; /* inherits browser default (16px) — respects user preference */
+	background: var(--indigo-900);
+	color: var(--on-indigo);
+	font-size: 100%; /* inherits the browser default (16px) and respects user preference */
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
+	font-variant-numeric: tabular-nums;
+}
+
+::selection {
+	background: var(--indigo-700);
+	color: var(--cloth);
+}
+
+.contact-row .contact-value {
+	text-decoration-thickness: 1px;
+}
+
+.contact-row:hover .contact-value {
+	text-decoration-thickness: 3px;
+}
+
+:focus-visible {
+	outline: 2px solid var(--turmeric);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+.on-cloth :focus-visible {
+	outline-color: var(--indigo-700);
+}
+
+a {
+	text-underline-offset: 0.2em;
+	text-decoration-thickness: 1px;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--display);
+	font-stretch: 112%;
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+.skip-link {
+	position: absolute;
+	left: 1rem;
+	top: -4rem;
+	z-index: 200;
+	background: var(--turmeric);
+	color: var(--indigo-900);
+	padding: 0.75rem 1rem;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.skip-link:focus {
+	top: 1rem;
+}
+
+/* Resist motifs: the lines draw once when their cloth enters view */
+.motif path,
+.motif circle,
+.motif line {
+	stroke-dasharray: 1;
+	stroke-dashoffset: 0;
+}
+
+.cloth[data-state="armed"] .motif path,
+.cloth[data-state="armed"] .motif circle,
+.cloth[data-state="armed"] .motif line {
+	stroke-dashoffset: 1;
+}
+
+.cloth[data-state="drawn"] .motif path,
+.cloth[data-state="drawn"] .motif circle,
+.cloth[data-state="drawn"] .motif line {
+	stroke-dashoffset: 0;
+	transition: stroke-dashoffset 0.9s var(--ease-out);
+	transition-delay: calc(var(--i, 0) * 40ms);
+}
+
+
+/* Resume and Listening share the cloth field; cover the sub-pixel seam
+   where the indigo page ground could show through between them */
+#playlist {
+	position: relative;
+	box-shadow: 0 -2px 0 var(--cloth);
 }
