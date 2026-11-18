@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import Cloth from "./components/Cloth";
+import AdirePattern from "./components/AdirePattern";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -9,15 +9,27 @@ import ProjectsSection from "./components/projects/ProjectsSection";
 import ResumeSection from "./components/ResumeSection";
 
 /**
- * A strip of cloth marking a seam between the indigo and cloth fields.
- * It sits on the page column so its cells share the hero's module:
- * twelve cells across the column on desktop, six on phones.
+ * A strip of the hero's mirrored adire field marking a seam between
+ * sections. Two tiles tall, so shapes close up across the middle seam.
+ * Tile size tracks the hero: 20 across the column on desktop (the hero's
+ * 8 x 8 field spans five twelfths of it), 8 across on phones (the same
+ * count as the hero strip).
  */
-const ClothBand = ({ seed }: { seed: number }) => (
+const PatternBand = () => (
 	<Box background="var(--indigo-900)">
 		<Box maxWidth="var(--page-max)" marginX="auto" paddingX="var(--gutter)">
-			<Cloth columns={12} rows={1} seed={seed} hideBelow="lg" />
-			<Cloth columns={6} rows={1} seed={seed} hideFrom="lg" />
+			<AdirePattern
+				columns={20}
+				rows={2}
+				hideBelow="lg"
+				border="1px solid var(--rule-on-indigo)"
+			/>
+			<AdirePattern
+				columns={8}
+				rows={2}
+				hideFrom="lg"
+				border="1px solid var(--rule-on-indigo)"
+			/>
 		</Box>
 	</Box>
 );
@@ -32,13 +44,13 @@ function App() {
 			<main>
 				<HeroSection />
 				<ProjectsSection />
-				<ClothBand seed={2} />
+				<PatternBand />
 				<ResumeSection />
 				<PlaylistSection />
-				<ClothBand seed={4} />
+				<PatternBand />
 				<ContactSection />
 			</main>
-			<ClothBand seed={6} />
+			<PatternBand />
 			<Footer />
 		</>
 	);

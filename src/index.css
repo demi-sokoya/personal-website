@@ -116,29 +116,6 @@ p {
 	top: 1rem;
 }
 
-/* Resist motifs: the lines draw once when their cloth enters view */
-.motif path,
-.motif circle,
-.motif line {
-	stroke-dasharray: 1;
-	stroke-dashoffset: 0;
-}
-
-.cloth[data-state="armed"] .motif path,
-.cloth[data-state="armed"] .motif circle,
-.cloth[data-state="armed"] .motif line {
-	stroke-dashoffset: 1;
-}
-
-.cloth[data-state="drawn"] .motif path,
-.cloth[data-state="drawn"] .motif circle,
-.cloth[data-state="drawn"] .motif line {
-	stroke-dashoffset: 0;
-	transition: stroke-dashoffset 0.9s var(--ease-out);
-	transition-delay: calc(var(--i, 0) * 40ms);
-}
-
-
 /* Resume and Listening share the cloth field; cover the sub-pixel seam
    where the indigo page ground could show through between them */
 #playlist {
