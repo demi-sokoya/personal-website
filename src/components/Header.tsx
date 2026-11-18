@@ -3,151 +3,139 @@ import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const NAV_LINKS = ["work", "resume", "playlist"] as const;
+const NAV_LINKS = [
+	{ href: "#work", label: "Work" },
+	{ href: "#resume", label: "Resume" },
+	{ href: "#playlist", label: "Listening" },
+] as const;
+
+const navLinkStyle = {
+	color: "var(--on-indigo-2)",
+	textDecoration: "none",
+	fontSize: "1rem",
+	_hover: { color: "var(--on-indigo)", textDecoration: "underline" },
+} as const;
 
 const Header = () => {
 	const headerRef = useRef<HTMLDivElement>(null);
 	const prevScrollY = useRef<number>(0);
 	const [menuOpen, setMenuOpen] = useState(false);
 
-	const handleClick = (anchor: string) => () => {
-		setMenuOpen(false);
-		const element = document.getElementById(`${anchor}-section`);
-		if (element) {
-			element.scrollIntoView({ behavior: "smooth", block: "start" });
-		}
-	};
-
 	useEffect(() => {
 		const handleScroll = (): void => {
-			const currentScrollY: number = window.scrollY;
-
+			const currentScrollY = window.scrollY;
 			if (headerRef.current) {
-				headerRef.current.style.transform =
-					currentScrollY > prevScrollY.current
-						? "translateY(-200px)"
-						: "translateY(0)";
+				const hide = currentScrollY > prevScrollY.current && currentScrollY > 80;
+				headerRef.current.style.transform = hide
+					? "translateY(-100%)"
+					: "translateY(0)";
 			}
-
 			if (menuOpen) setMenuOpen(false);
 			prevScrollY.current = currentScrollY;
 		};
 
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [menuOpen]);
 
 	return (
 		<Box
+			as="header"
 			ref={headerRef}
 			position="fixed"
 			top={0}
 			left={0}
 			right={0}
-			transitionProperty="transform"
-			transitionDuration=".3s"
-			transitionTimingFunction="ease-in-out"
-			backgroundColor="#f5f2ece0"
-			style={{ backdropFilter: "blur(12px)" }}
-			borderBottom="1px solid"
-			borderColor="blackAlpha.100"
-			zIndex={100}>
-			<Box maxWidth="min(56.25rem, 90vw)" margin="0 auto" px={{ base: "1rem", md: "2.5rem" }}>
-				<HStack height="3.5rem" justifyContent="space-between">
-					{/* Logo */}
+			zIndex={100}
+			background="var(--indigo-900)"
+			borderBottom="1px solid var(--rule-on-indigo)"
+			transition="transform 0.35s var(--ease-out)">
+			<Box maxWidth="var(--page-max)" marginX="auto" paddingX="var(--gutter)">
+				<HStack height="4rem" justifyContent="space-between">
 					<Link
-						href="#"
-						fontFamily="var(--serif)"
+						href="#top"
+						fontFamily="var(--display)"
+						fontWeight={760}
 						fontSize="1.125rem"
-						letterSpacing="-0.02em"
-						color="var(--ink)"
+						letterSpacing="-0.01em"
+						color="var(--on-indigo)"
 						textDecoration="none"
+						style={{ fontStretch: "112%" }}
 						_hover={{ textDecoration: "none" }}>
-						Demi
+						Demi Sokoya
 					</Link>
 
-					{/* Nav links — desktop only */}
-					<HStack as="nav" gap="2rem" hideBelow="sm">
-						{NAV_LINKS.map((anchor) => (
-							<Link
-								key={anchor}
-								href={`#${anchor}`}
-								fontSize="0.8125rem"
-								color="var(--ink-2)"
-								onClick={handleClick(anchor)}
-								_hover={{ color: "var(--ink)" }}
-								textDecoration="none">
-								{anchor.charAt(0).toUpperCase() + anchor.slice(1)}
+					<HStack as="nav" aria-label="Main" gap="2.25rem" hideBelow="md">
+						{NAV_LINKS.map((item) => (
+							<Link key={item.href} href={item.href} {...navLinkStyle}>
+								{item.label}
 							</Link>
 						))}
-					</HStack>
-
-					<HStack gap="0.75rem">
-						{/* CTA */}
 						<Link
 							href="#contact"
-							fontSize="0.8125rem"
-							border="1px solid"
-							borderColor="var(--border-strong)"
-							borderRadius="99px"
-							px="1rem"
-							py="0.375rem"
-							color="var(--ink)"
-							whiteSpace="nowrap"
+							color="var(--on-indigo)"
+							fontSize="1rem"
+							fontWeight={700}
+							border="1.5px solid var(--on-indigo)"
+							paddingX="1rem"
+							paddingY="0.4rem"
 							textDecoration="none"
-							_hover={{ background: "var(--surface)", textDecoration: "none" }}>
+							_hover={{
+								background: "var(--on-indigo)",
+								color: "var(--indigo-900)",
+								textDecoration: "none",
+							}}>
 							Get in touch
 						</Link>
-
-						{/* Hamburger — mobile only */}
-						<Box
-							as="button"
-							hideFrom="sm"
-							display="flex"
-							alignItems="center"
-							justifyContent="center"
-							width="2rem"
-							height="2rem"
-							color="var(--ink)"
-							background="none"
-							border="none"
-							cursor="pointer"
-							aria-label={menuOpen ? "Close menu" : "Open menu"}
-							onClick={() => setMenuOpen((o) => !o)}>
-							<FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
-						</Box>
 					</HStack>
+
+					<Box
+						as="button"
+						hideFrom="md"
+						display="flex"
+						alignItems="center"
+						justifyContent="center"
+						width="2.75rem"
+						height="2.75rem"
+						color="var(--on-indigo)"
+						background="none"
+						border="none"
+						cursor="pointer"
+						aria-label={menuOpen ? "Close menu" : "Open menu"}
+						aria-expanded={menuOpen}
+						aria-controls="mobile-nav"
+						onClick={() => setMenuOpen((o) => !o)}>
+						<FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
+					</Box>
 				</HStack>
 			</Box>
 
-			{/* Dropdown — mobile only */}
 			{menuOpen && (
 				<Box
-					hideFrom="sm"
-					borderTop="1px solid"
-					borderColor="blackAlpha.100"
-					backgroundColor="#f5f2ece0"
-					style={{ backdropFilter: "blur(12px)" }}
-					px="1.5rem"
-					py="1rem"
+					as="nav"
+					id="mobile-nav"
+					aria-label="Main"
+					hideFrom="md"
+					borderTop="1px solid var(--rule-on-indigo)"
+					background="var(--indigo-900)"
+					paddingX="var(--gutter)"
+					paddingY="0.5rem"
 					display="flex"
-					flexDirection="column"
-					gap="0">
-					{NAV_LINKS.map((anchor) => (
-						<Link
-							key={anchor}
-							href={`#${anchor}`}
-							fontSize="0.9375rem"
-							color="var(--ink-2)"
-							onClick={handleClick(anchor)}
-							_hover={{ color: "var(--ink)" }}
-							textDecoration="none"
-							py="0.75rem"
-							borderBottom="1px solid"
-							borderColor="blackAlpha.50">
-							{anchor.charAt(0).toUpperCase() + anchor.slice(1)}
-						</Link>
-					))}
+					flexDirection="column">
+					{[...NAV_LINKS, { href: "#contact", label: "Get in touch" }].map(
+						(item) => (
+							<Link
+								key={item.href}
+								href={item.href}
+								onClick={() => setMenuOpen(false)}
+								{...navLinkStyle}
+								fontSize="1.125rem"
+								paddingY="0.875rem"
+								borderBottom="1px solid var(--rule-on-indigo)">
+								{item.label}
+							</Link>
+						),
+					)}
 				</Box>
 			)}
 		</Box>

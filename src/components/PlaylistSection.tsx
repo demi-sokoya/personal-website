@@ -1,55 +1,46 @@
-﻿import { Box, Text } from "@chakra-ui/react";
+﻿import { Box } from "@chakra-ui/react";
 import FullScreenSection from "@/components/FullScreenSection";
+import ResistRule from "@/components/ResistRule";
 
 const PlaylistSection = () => {
 	return (
-		<FullScreenSection id="playlist">
-			<Box
-				fontFamily="var(--mono)"
-				fontSize="0.6875rem"
-				letterSpacing="0.1em"
-				textTransform="uppercase"
-				color="var(--ink-3)"
-				mb="2.25rem"
-				display="flex"
-				alignItems="center"
-				gap="0.75rem">
-				Currently listening
-				<Box flex={1} height="1px" background="var(--border)" />
-			</Box>
-
+		<FullScreenSection id="playlist" field="cloth" paddingTop="0">
+			<ResistRule seed={11} tone="var(--indigo-700)" marginBottom="var(--section-y)" />
 			<Box
 				display="grid"
-				gridTemplateColumns={{ base: "1fr", md: "1fr 1fr" }}
-				gap="2.5rem"
+				gridTemplateColumns={{ base: "1fr", lg: "repeat(12, 1fr)" }}
+				columnGap="2rem"
+				rowGap="2.5rem"
 				alignItems="center">
-				{/* Text side */}
-				<Box>
+				<Box gridColumn={{ lg: "1 / 6" }}>
 					<Box
-						fontFamily="var(--serif)"
-						fontSize="2rem"
-						letterSpacing="-0.03em"
-						mb="0.75rem"
-						lineHeight={1.15}>
-						Somehow{" "}
-						<Box as="em" fontStyle="italic" color="var(--accent)">
-							Florence + the Machine
-						</Box>{" "}
-						and Wizkid ended up in the same playlist.
+						as="h2"
+						fontSize="clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem)"
+						fontWeight={740}
+						letterSpacing="-0.025em"
+						lineHeight={1.1}
+						marginBottom="1rem">
+						Currently listening
 					</Box>
-					<Text fontSize="0.875rem" color="var(--ink-2)" lineHeight={1.7}>
-						It works. I don't question it.
-					</Text>
+					<Box
+						as="p"
+						fontSize="1.125rem"
+						lineHeight={1.6}
+						color="var(--ink-2)"
+						maxWidth="28rem">
+						Somehow Florence + the Machine and Wizkid ended up in the same
+						playlist. It works. I don't question it.
+					</Box>
 				</Box>
 
-				<Box borderRadius="12px" overflow="hidden" height="22rem">
+				<Box gridColumn={{ lg: "7 / 13" }}>
 					<iframe
 						data-testid="embed-iframe"
-						style={{ borderRadius: "12px" }}
+						title="Spotify playlist: Currently listening"
+						style={{ border: 0, display: "block" }}
 						src="https://open.spotify.com/embed/playlist/7sPvRANlNjd2pqWM4J74my?utm_source=generator&theme=0"
 						width="100%"
 						height="352"
-						allowFullScreen
 						allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 						loading="lazy"></iframe>
 				</Box>

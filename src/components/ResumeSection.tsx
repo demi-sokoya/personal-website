@@ -1,109 +1,65 @@
 import FullScreenSection from "@/components/FullScreenSection";
+import { primaryButton, sectionHeading } from "@/components/styles";
 import { skills } from "@/data";
-import { Box, HStack, Link, Text } from "@chakra-ui/react";
+import { Box, Link } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faFile } from "@fortawesome/free-solid-svg-icons";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 const ResumeSection = () => {
 	return (
-		<FullScreenSection id="resume">
-			<Box
-				fontFamily="var(--mono)"
-				fontSize="0.6875rem"
-				letterSpacing="0.1em"
-				textTransform="uppercase"
-				color="var(--ink-3)"
-				mb="2.25rem"
-				alignItems="center"
-				display="flex"
-				gap="0.75rem">
-				Resume
-				<Box flex={1} height="1px" background="var(--border)" />
-			</Box>
-
-			{/* Resume Download Card */}
-			<Box
-				background="var(--surface)"
-				border="1px solid var(--border)"
-				borderRadius="var(--r)"
-				p="1.25rem"
-				maxWidth="33.75rem"
-				display="flex"
-				flexDirection={{ base: "column", sm: "row" }}
-				alignItems={{ base: "flex-start", sm: "center" }}
-				gap="1rem">
-				<HStack gap="1rem" flex={1} minWidth={0} alignItems="center">
-					<Box
-						width="2.875rem"
-						height="2.875rem"
-						flexShrink={0}
-						background="var(--accent-light)"
-						borderRadius="10px"
-						display="flex"
-						alignItems="center"
-						justifyContent="center">
-						<FontAwesomeIcon icon={faFile} color="var(--accent)" />
-					</Box>
-					<Box minWidth={0}>
-						<Text
-							fontSize="0.875rem"
-							fontWeight="500"
-							overflow="hidden"
-							textOverflow="ellipsis"
-							whiteSpace="nowrap">
-							Demi Sokoya - Resume
-						</Text>
-						<Text fontSize="0.75rem" color="var(--ink-3)">
-							Front-end developer, UX Designer · PDF, updated Sep 2026
-						</Text>
-					</Box>
-				</HStack>
-				<Link
-					href="/demi_sokoya_resume.pdf"
-					display="inline-flex"
-					alignItems="center"
-					gap="0.5rem"
-					px="1.25rem"
-					py="0.5rem"
-					borderRadius="99px"
-					background="var(--ink)"
-					color="var(--bg)"
-					fontSize="0.8125rem"
-					flexShrink={0}
-					textDecoration="none"
-					_hover={{ opacity: 0.82, textDecoration: "none" }}>
-					<FontAwesomeIcon icon={faDownload} size="xs" />
-					Download
+		<FullScreenSection
+			id="resume"
+			field="cloth"
+			display="grid"
+			gridTemplateColumns={{ base: "1fr", lg: "repeat(12, 1fr)" }}
+			columnGap="2rem"
+			rowGap="3.5rem">
+			<Box gridColumn={{ lg: "1 / 6" }}>
+				<Box {...sectionHeading} marginBottom="1.5rem">
+					Resume
+				</Box>
+				<Box
+					as="p"
+					fontSize="1.125rem"
+					lineHeight={1.6}
+					color="var(--ink-2)"
+					marginBottom="2.25rem"
+					maxWidth="26rem">
+					Front-end developer and UX designer. PDF, updated September 2026.
+				</Box>
+				<Link href="/demi_sokoya_resume.pdf" download {...primaryButton}>
+					<FontAwesomeIcon icon={faDownload} />
+					Download resume
 				</Link>
 			</Box>
 
-			{/* Skills */}
-			<Box mt="2rem">
-				<Text
-					fontFamily="var(--mono)"
-					fontSize="0.6875rem"
-					letterSpacing="0.08em"
-					textTransform="uppercase"
-					color="var(--ink-3)"
-					mb="0.875rem">
-					Skills &amp; tools
-				</Text>
-				<HStack flexWrap="wrap" gap="0.5rem">
+			<Box gridColumn={{ lg: "7 / 13" }}>
+				<Box
+					as="h3"
+					fontSize="1.5rem"
+					fontWeight={720}
+					letterSpacing="-0.015em"
+					marginBottom="1.25rem">
+					Skills and tools
+				</Box>
+				<Box
+					as="ul"
+					listStyleType="none"
+					display="grid"
+					gridTemplateColumns={{ base: "1fr", sm: "1fr 1fr" }}
+					columnGap="2rem"
+					borderBottom="1px solid var(--rule-on-cloth)">
 					{skills.map((skill) => (
 						<Box
+							as="li"
 							key={skill}
-							fontSize="0.75rem"
-							fontFamily="var(--mono)"
-							color="var(--ink-2)"
-							background="var(--bg)"
-							border="1px solid var(--border)"
-							borderRadius="4px"
-							px="0.625rem"
-							py="0.25rem">
+							fontSize="1.0625rem"
+							paddingY="0.75rem"
+							borderTop="1px solid var(--rule-on-cloth)">
 							{skill}
 						</Box>
 					))}
-				</HStack>
+				</Box>
 			</Box>
 		</FullScreenSection>
 	);

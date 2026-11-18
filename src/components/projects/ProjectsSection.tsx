@@ -1,8 +1,8 @@
 ﻿import { projects, type GhostCard, type Project } from "@/data";
 import FullScreenSection from "../FullScreenSection";
-import { Box, Text } from "@chakra-ui/react";
-import FeaturedCard from "./FeaturedCard";
-import RegularCard from "./RegularCard";
+import { Box } from "@chakra-ui/react";
+import ProjectEntry from "./ProjectEntry";
+import { sectionHeading } from "@/components/styles";
 
 function isGhostCard(item: Project | GhostCard): item is GhostCard {
 	return (item as GhostCard).ghost === true;
@@ -18,62 +18,43 @@ const ghosts = projects.filter(isGhostCard);
 
 const ProjectsSection = () => {
 	return (
-		<FullScreenSection id="work">
+		<FullScreenSection id="work" paddingTop={{ base: "3rem", md: "4rem" }}>
 			<Box
-				fontFamily="var(--mono)"
-				fontSize="0.6875rem"
-				letterSpacing="0.1em"
-				textTransform="uppercase"
-				color="var(--ink-3)"
-				mb="2.25rem"
 				display="flex"
-				alignItems="center"
-				gap="0.75rem">
-				Selected work
-				<Box flex={1} height="1px" background="var(--border)" />
+				flexWrap="wrap"
+				alignItems="baseline"
+				justifyContent="space-between"
+				gap="1rem"
+				paddingTop="2rem"
+				borderTop="1px solid var(--rule-on-indigo)"
+				marginBottom={{ base: "3rem", md: "4.5rem" }}>
+				<Box {...sectionHeading}>Selected work</Box>
+				<Box as="p" color="var(--on-indigo-2)" fontSize="1.0625rem">
+					Each one designed and built by me.
+				</Box>
 			</Box>
 
-			{featured && <FeaturedCard project={featured} />}
+			<Box display="flex" flexDirection="column" gap={{ base: "4.5rem", md: "7rem" }}>
+				{featured && <ProjectEntry project={featured} lead />}
+				{regular.map((p, i) => (
+					<ProjectEntry key={p.id} project={p} flip={i % 2 === 0} />
+				))}
+			</Box>
 
-			{(regular.length > 0 || ghosts.length > 0) && (
+			{ghosts.map((g, i) => (
 				<Box
-					display="grid"
-					gridTemplateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
-					gap="1rem"
-					mt="1rem">
-					{regular.map((p) => (
-						<RegularCard key={p.id} project={p} />
-					))}
-					{ghosts.map((g, i) => (
-						<Box
-							key={`ghost-${i}`}
-							border="1px dashed var(--border-strong)"
-							borderRadius="var(--r)"
-							minHeight="16rem"
-							display="flex"
-							flexDirection="column"
-							alignItems="center"
-							justifyContent="center"
-							gap="0.5rem">
-							<Box
-								width="1.5rem"
-								height="1.5rem"
-								borderRadius="50%"
-								border="1px dashed var(--border-strong)"
-							/>
-							<Text
-								fontSize="0.75rem"
-								color="var(--ink-3)"
-								fontFamily="var(--mono)">
-								{g.label}
-							</Text>
-						</Box>
-					))}
+					key={`ghost-${i}`}
+					marginTop={{ base: "4.5rem", md: "6rem" }}
+					paddingY="1.25rem"
+					borderTop="1px dashed var(--rule-on-indigo)"
+					borderBottom="1px dashed var(--rule-on-indigo)"
+					color="var(--on-indigo-2)"
+					fontSize="1.0625rem">
+					Next project: {g.label.toLowerCase()}.
 				</Box>
-			)}
+			))}
 		</FullScreenSection>
 	);
 };
 
 export default ProjectsSection;
-
