@@ -94,6 +94,8 @@ interface AdirePatternProps extends BoxProps {
 	rows?: number;
 	/** Show the tile seams, to see how the mirroring works */
 	showSeams?: boolean;
+	/** Pure ornament (section bands): hidden from assistive technology */
+	decorative?: boolean;
 }
 
 const AdirePattern = ({
@@ -101,6 +103,7 @@ const AdirePattern = ({
 	columns = size,
 	rows = size,
 	showSeams = false,
+	decorative = false,
 	...boxProps
 }: AdirePatternProps) => {
 	// Unique ids so more than one pattern can sit on a page
@@ -133,8 +136,12 @@ const AdirePattern = ({
 			<svg
 				viewBox={`0 0 ${width} ${height}`}
 				width="100%"
-				role="img"
-				aria-label={`Adire pattern: one hand-drawn tile mirrored across a ${columns} by ${rows} grid`}
+				{...(decorative
+					? { "aria-hidden": true, focusable: "false" }
+					: {
+							role: "img",
+							"aria-label": `Adire pattern: one hand-drawn tile mirrored across a ${columns} by ${rows} grid`,
+						})}
 				style={{ display: "block" }}>
 				<defs>
 					<clipPath id={clipId}>
