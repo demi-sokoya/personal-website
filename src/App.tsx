@@ -21,12 +21,14 @@ const PatternBand = () => (
 			<AdirePattern
 				columns={20}
 				rows={2}
+				decorative
 				hideBelow="lg"
 				border="1px solid var(--rule-on-indigo)"
 			/>
 			<AdirePattern
 				columns={8}
 				rows={2}
+				decorative
 				hideFrom="lg"
 				border="1px solid var(--rule-on-indigo)"
 			/>

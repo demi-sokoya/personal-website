@@ -98,6 +98,11 @@ const ContactSection = () => {
 							<Box as="span" className="contact-value" fontWeight={700} textDecoration="underline" wordBreak="break-word">
 								{link.value}
 							</Box>
+							{link.href.startsWith("http") && (
+								<Box as="span" srOnly>
+									(opens in a new tab)
+								</Box>
+							)}
 						</Link>
 					</Box>
 				))}

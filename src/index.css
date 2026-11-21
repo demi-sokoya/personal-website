@@ -100,6 +100,11 @@ p {
 	text-wrap: pretty;
 }
 
+/* The header slides away on scroll down, but never while it holds focus */
+.site-header[data-scrolled-away]:not(:focus-within) {
+	transform: translateY(-100%);
+}
+
 .skip-link {
 	position: absolute;
 	left: 1rem;

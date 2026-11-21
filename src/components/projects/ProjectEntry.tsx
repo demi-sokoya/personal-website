@@ -59,6 +59,8 @@ const ProjectEntry = ({ project, lead = false, flip = false }: ProjectEntryProps
 				<Image
 					src={project.imageSrc}
 					alt={`Screenshot of ${project.title}`}
+					htmlWidth={project.imageWidth}
+					htmlHeight={project.imageHeight}
 					width="100%"
 					height="auto"
 					display="block"
